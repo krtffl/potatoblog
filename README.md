@@ -26,3 +26,16 @@ python manage.py startapp blog
 ```
 
 and register it
+
+```bash
+python manage.py makemigrations blog
+python manage.py migrate blog
+python manage.py migrate 
+```
+
+create admin 
+
+```bash
+python manage.py createsuperuser
+```
+
