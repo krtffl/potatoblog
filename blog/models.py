@@ -35,3 +35,19 @@ class Post(models.Model):
     # default human-readable representation
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=60)
+    email = models.EmailField()
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    validated = models.BooleanField(default=False)
+
+    # metadata
+    class Meta:
+        ordering = ["-created_on"]
+
+    def __str__(self):
+        return "Comment {} by {}".format(self.content, self.name)
